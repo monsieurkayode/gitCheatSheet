@@ -1,7 +1,12 @@
 {
-  "verbose": true,
+  "verbose": false,
   "collectCoverage": true,
-  "collectCoverageFrom": [],
+  "testPathIgnorePatterns": [
+    "<rootDir>/dist/"
+  ],
+  "collectCoverageFrom": [
+    "<rootDir>/server/**/*.{js}"
+  ],
   "snapshotSerializers": [
     "enzyme-to-json/serializer"
   ],
