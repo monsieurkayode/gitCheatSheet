@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable global-require */
 /* eslint-disable no-console */
 import express from 'express';
 import favicon from 'serve-favicon';
@@ -8,18 +10,15 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import { STATUS_CODES } from 'http';
-import webpack from 'webpack';
-import webpackDevMiddleware from 'webpack-dev-middleware'; // eslint-disable-line
-import webpackHotMiddleware from 'webpack-hot-middleware'; // eslint-disable-line
-import webpackConfig from '../../webpack.config.dev'; // eslint-disable-line
 import dbConfig from './config';
+import routes from './routes/user';
+import setupAdmin from './seeds/adminSeed';
 
 dotenv.config();
 
 const env = process.env.NODE_ENV || 'development';
 const port = process.env.PORT || 5000;
 const config = dbConfig[env];
-const compiler = webpack(webpackConfig);
 const app = express();
 
 if (config.use_env_variable) {
@@ -46,7 +45,9 @@ app.use(compression());
 app.use(express.static(resolve(__dirname, '../../dist/client')));
 app.use(
   '/favicon.ico',
-  favicon(resolve(__dirname, '../client/favicon.ico'))
+  favicon(resolve(
+    __dirname, `../client${env === 'test' ? '/src' : ''}/favicon.ico`
+  ))
 );
 
 // parse application/json
@@ -56,9 +57,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.disable('x-powered-by');
 
-if (env !== 'production') {
+if (env === 'development') {
+  const webpack = require('webpack');
+  const webpackDevMiddleware = require('webpack-dev-middleware');
+  const webpackConfig = require('../../webpack.config.dev'); // eslint-disable-line
+  const webpackHotMiddleware = require('webpack-hot-middleware');
+  const compiler = webpack(webpackConfig);
   app.use(webpackDevMiddleware(compiler, {
     noInfo: true,
+    stats: 'errors-only',
     publicPath: webpackConfig.output.publicPath
   }));
   app.use(webpackHotMiddleware(compiler));
@@ -77,11 +84,13 @@ app.get('/api', (req, res) => {
   });
 });
 
+app.use(routes);
+
 app.use('*', (req, res) => {
   res.sendFile(resolve(__dirname, '../client/index.html'));
 });
 
-app.listen(port, (err) => {
+export const server = app.listen(port, (err) => {
   if (err) {
     console.error(err);
   }
@@ -89,5 +98,8 @@ app.listen(port, (err) => {
   db.once('open', () => {
     console.info('🍺 Database connection established...');
     console.info(`🍺 Server started on ${port}`);
+    setupAdmin();
   });
 });
+
+export default app;
