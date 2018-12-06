@@ -15,7 +15,7 @@ export default styled.input`
   cursor: pointer;
   letter-spacing: 2px;
   
-  &:hover {
+  &:hover:not(:disabled) {
     background: #546975;
   }
 `;

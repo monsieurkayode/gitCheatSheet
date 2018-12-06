@@ -1,7 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
 import { Link } from 'react-router-dom';
+import Avatar from 'react-avatar';
+import { toast } from 'react-toastify';
+import { logoutUser } from '../../actions/userActions';
 import logo from '../../assets/images/giticonw.png';
 
 const Nav = styled.nav`
@@ -99,6 +104,8 @@ const Nav = styled.nav`
 
     .actions {
       font-family:  'Josefin Sans', sans-serif;
+      min-width: 60px;
+
       ul {
         line-height: 0;
         list-style: none;
@@ -123,32 +130,66 @@ const Nav = styled.nav`
   }
 `;
 
-const NavBar = () => (
+const AvatarDiv = styled.div`
+  line-height: 0;
+  display: ${props => (props.authenticated ? '' : 'none')}
+`;
+
+const NavMenu = styled.ul`
+  display: ${props => (props.authenticated ? 'none' : '')}
+`;
+
+const NavBar = ({ user, authenticated, logout }) => (
   <Nav className="top-nav">
     <div className="container">
       <div className="left">
-        <Link to="/">
+        <Link to="/" onClick={() => toast.dismiss()}>
           <img src={logo} alt="Logo" />
         </Link>
       </div>
       <div className="brand"><Link to="/">Gitcheatsheet</Link></div>
       <div className="actions">
-        <ul>
-          <Link to="/register" onClick={() => ReactTooltip.hide()}>
+        <AvatarDiv authenticated={authenticated} data-tip data-for="logout">
+          <Avatar
+            onClick={() => {
+              ReactTooltip.hide();
+              logout();
+            }}
+            style={{ cursor: 'pointer' }}
+            round
+            size={30}
+            name={user.username}
+            color="#668090"
+          />
+        </AvatarDiv>
+        <NavMenu authenticated={authenticated}>
+          <Link
+            to="/register"
+            onClick={() => {
+              toast.dismiss();
+              ReactTooltip.hide();
+            }}
+          >
             <li>
               <i data-tip data-for="register" className="material-icons">
                 person_add
               </i>
             </li>
           </Link>
-          <Link to="/login" onClick={() => ReactTooltip.hide()}>
+          <Link
+            to="/login"
+            onClick={() => {
+              toast.dismiss();
+              ReactTooltip.hide();
+            }}
+          >
             <li>
               <i data-tip data-for="login" className="material-icons">
                 account_circle
               </i>
             </li>
           </Link>
-        </ul>
+        </NavMenu>
       </div>
     </div>
     <ReactTooltip className="tooltip" id="register" effect="solid">
@@ -157,7 +198,29 @@ const NavBar = () => (
     <ReactTooltip className="tooltip" id="login" effect="solid">
       <span>Login</span>
     </ReactTooltip>
+    <ReactTooltip className="tooltip" id="logout" effect="solid">
+      <span>Logout</span>
+    </ReactTooltip>
   </Nav>
 );
 
-export default NavBar;
+NavBar.defaultProps = {
+  user: {}
+};
+
+NavBar.propTypes = {
+  authenticated: PropTypes.bool.isRequired,
+  user: PropTypes.shape({
+    id: PropTypes.string,
+    username: PropTypes.string
+  }),
+  logout: PropTypes.func.isRequired
+};
+
+
+const mapStateToProps = ({ userDetails }) => ({
+  authenticated: Object.keys(userDetails.user).length === 2,
+  user: userDetails.user
+});
+
+export default connect(mapStateToProps, { logout: logoutUser })(NavBar);

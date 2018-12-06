@@ -121,8 +121,6 @@ describe('User Authentication Test', () => {
           .post('/api/v1/register')
           .send(user);
         expect(response.status).toEqual(422);
-        expect(response.body.message.password)
-          .toEqual('Passwords do not match');
         expect(response.body.message.confirmPassword)
           .toEqual('Passwords do not match');
       });
