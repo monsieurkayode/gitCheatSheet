@@ -24,6 +24,15 @@ body, html {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   margin: 50px 0;
+}
+
+input[type="submit"]:disabled {
+  cursor: not-allowed;
+}
+
+.btn-loader {
+  transform: translateX(-60px);
+  visibility: hidden;
 }

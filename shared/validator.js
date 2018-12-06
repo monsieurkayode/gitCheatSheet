@@ -37,10 +37,9 @@ export const validateUserForm = (formData) => {
     if (inputLength && key === 'password') {
       inputLength < 6 ? errors[key] = `${caps(key)} not strong enough` : null;
       inputLength >= 6 && (!Object.keys(formData).includes('confirmPassword')
-        || (formData.confirmPassword
-          && value.trim() !== formData.confirmPassword.toString().trim()))
-        // eslint-disable-next-line no-multi-assign
-        ? errors[key] = errors.confirmPassword = `${caps(key)}s do not match`
+        || (Object.keys(formData).includes('confirmPassword')
+          && value !== formData.confirmPassword))
+        ? errors.confirmPassword = `${caps(key)}s do not match`
         : null;
     }
   });

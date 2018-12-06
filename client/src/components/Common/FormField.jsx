@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { string } from 'prop-types';
+import PropTypes from 'prop-types';
 
 const FieldWrapper = styled.div`
   .icon {
@@ -19,6 +19,7 @@ const FieldWrapper = styled.div`
     background: #f1f3f5;
     font-size: 14px;
     font-family: Roboto, sans-serif;
+    letter-spacing: 1.5px;
 
     &:focus {
       border-bottom: 2px solid #6756b3;
@@ -62,7 +63,10 @@ const FormField = ({
   name,
   value,
   type,
-  error
+  error,
+  onChange,
+  onBlur,
+  loading
 }) => (
   <FieldWrapper className="form-field">
     <input
@@ -70,8 +74,10 @@ const FormField = ({
       type={type}
       placeholder={placeholder}
       value={value}
-      onChange={() => {}}
+      onChange={onChange}
+      onBlur={onBlur}
       className={error.length > 0 ? 'invalid' : ''}
+      readOnly={loading}
     />
     <i className="material-icons icon">{icon}</i>
     <div className="error">&nbsp;{error}</div>
@@ -85,12 +91,15 @@ FormField.defaultProps = {
 };
 
 FormField.propTypes = {
-  placeholder: string.isRequired,
-  icon: string.isRequired,
-  name: string.isRequired,
-  value: string,
-  type: string,
-  error: string
+  placeholder: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  type: PropTypes.string,
+  error: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired
 };
 
 export default FormField;
