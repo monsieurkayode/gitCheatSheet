@@ -28,7 +28,7 @@ const Container = styled.footer`
 
 const Footer = () => (
   <Container>
-    <p>&copy;&nbsp;2018</p>
+    <p>&copy;&nbsp;2018, Kayode</p>
     <p>Inspired By&nbsp;<span>devhints.io</span></p>
   </Container>
 );

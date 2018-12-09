@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Container = styled.div`
   display: flex;
@@ -59,13 +60,40 @@ const Container = styled.div`
   }
 `;
 
-const SearchBar = () => (
+const SearchBar = ({
+  onFocus,
+  onChange,
+  searchTerm,
+  search
+}) => (
   <Container>
     <span className="tag">gitcheatsheet</span>
     <span className="divider" />
-    <input type="text" className="search" placeholder="Search..." />
+    <input
+      name="searchTerm"
+      type="text"
+      className="search"
+      placeholder="Search..."
+      onChange={onChange}
+      onFocus={onFocus}
+      value={searchTerm}
+      // eslint-disable-next-line jsx-a11y/no-autofocus
+      autoFocus={search}
+    />
     <i className="material-icons search-icon">search</i>
   </Container>
 );
+
+SearchBar.defaultProps = {
+  searchTerm: '',
+  search: false
+};
+
+SearchBar.propTypes = {
+  onFocus: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  searchTerm: PropTypes.string,
+  search: PropTypes.bool
+};
 
 export default SearchBar;

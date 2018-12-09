@@ -10,6 +10,7 @@ import SignupPage from './components/Signup/SignupPage';
 import Navbar from './components/Common/Navbar';
 import CheatPage from './components/Cheat/CheatPage';
 import NotFoundPage from './components/Common/NotFoundPage';
+import SearchPage from './components/Search/SearchPage';
 import store from './store';
 import { loginUserSuccess } from './actions/userActions';
 import fetchCheats from './actions/cheatActions';
@@ -35,6 +36,7 @@ render(
         </Fragment>
         <Switch>
           <Route exact path="/" component={LandingPage} />
+          <Route exact path="/search" component={SearchPage} />
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/register" component={SignupPage} />
           <Route exact path="/cheats/:category" component={CheatPage} />
