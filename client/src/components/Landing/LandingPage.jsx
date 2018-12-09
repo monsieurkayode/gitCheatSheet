@@ -18,10 +18,13 @@ const Section = styled.section`
   }
 `;
 
-const LandingPage = ({ categories }) => (
+const LandingPage = ({ categories, history }) => (
   <Fragment>
     <Container>
-      <SearchBar />
+      <SearchBar
+        onChange={() => {}}
+        onFocus={() => history.push('/search')}
+      />
       <Section>
         { categories.map(category => (
           <CategoryCard
@@ -37,7 +40,10 @@ const LandingPage = ({ categories }) => (
 );
 
 LandingPage.propTypes = {
-  categories: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+  categories: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func
+  }).isRequired
 };
 
 const mapStateToProps = ({ cheatSheets }) => ({

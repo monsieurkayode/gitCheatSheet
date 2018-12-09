@@ -4,11 +4,16 @@ import styled from 'styled-components';
 import CheatCommand from './CheatCommand';
 
 const Container = styled.div`
+  @keyframes fadeIn {
+    from { opacity: 0 }
+    to { opacity: 1 }
+  }
+
   margin: 0 2%;
   min-width: 300px;
   padding-bottom: 20px;
   break-inside: avoid;
-    
+  animation: 0.5s fadeIn alternate;
 
   header {
     display: flex;
