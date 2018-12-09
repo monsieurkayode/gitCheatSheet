@@ -1,8 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import PreloaderIcon from 'react-preloader-icon';
 import Oval from 'react-preloader-icon/loaders/Oval';
 
+const LoaderWrapper = styled.div`
+  &.loader {
+    flex: ${({ loading }) => (loading ? 1 : 0)}
+  }
+`;
 /**
  *
  * @function Loader
@@ -17,9 +23,12 @@ const Loader = ({
   inline,
   loading
 }) => (
-  <div
-    style={{ visibility: loading ? 'visible' : 'hidden' }}
-    className={`loader ${inline ? 'btn-loader' : ''}`}
+  <LoaderWrapper
+    style={{
+      visibility: loading ? 'visible' : 'hidden'
+    }}
+    loading={loading}
+    className={`${inline ? 'btn-loader' : 'loader'}`}
   >
     <PreloaderIcon
       loader={Oval}
@@ -28,7 +37,7 @@ const Loader = ({
       strokeColor={strokeColor}
       duration={1200}
     />
-  </div>
+  </LoaderWrapper>
 );
 
 Loader.defaultProps = {

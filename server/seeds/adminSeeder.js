@@ -4,7 +4,7 @@ import User from '../models/user';
 
 dotenv.config();
 
-const setupAdmin = async () => {
+const setupAdmin = async (cb) => {
   const count = await User.estimatedDocumentCount();
 
   if (count === 0) {
@@ -16,6 +16,8 @@ const setupAdmin = async () => {
     });
 
     console.log('🍺 Admin user setup complete...');
+
+    if (typeof cb === 'function') cb();
   }
 };
 

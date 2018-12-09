@@ -1,7 +1,11 @@
+/* eslint-disable no-underscore-dangle */
 import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import CheatCard from './CheatCard';
+import NoContent from '../Common/NoContent';
+import Loader from '../Common/Loader';
 
 const Container = styled.main`
   max-width: 1232px;
@@ -32,34 +36,36 @@ const Heading = styled.h2`
 `;
 
 const Section = styled.section`
-  column-count: 3;
-  column-gap: 0;
+  column-count: auto;
+  column-width: 360px;
   margin-top: 20px;
-
-  @media only screen and (max-width: 960px) {
-    column-count: 2;
-  }
-
-  @media only screen and (max-width: 640px) {
-    column-count: 1;
-  }
 `;
 
-const CheatPage = ({ match }) => (
+const CheatPage = ({ match, cheats, loading }) => (
   <Fragment>
+    {cheats.length === 0 && (
+      <Loader
+        style={{ display: loading ? '' : 'none' }}
+        size={40}
+        strokeColor="#6756b3"
+        loading={loading}
+      />
+    )}
+    {cheats.length === 0 && !loading && (
+    <NoContent
+      content="Oops, sorry can't find what you're looking for"
+    />)}
+    {cheats.length > 0 && (
     <Container>
       <HeaderWrapper>
         <Heading>{match.params.category.replace(/-/g, ' ')}&nbsp;</Heading>
         <Heading sub>cheatsheet</Heading>
       </HeaderWrapper>
       <Section>
-        <CheatCard />
-        <CheatCard />
-        <CheatCard />
-        <CheatCard />
-        <CheatCard />
+        {cheats.map(cheat => <CheatCard key={cheat._id} {...cheat} />)}
       </Section>
     </Container>
+    )}
   </Fragment>
 );
 
@@ -68,7 +74,17 @@ CheatPage.propTypes = {
     params: PropTypes.shape({
       category: PropTypes.string.isRequired
     }).isRequired
-  }).isRequired
+  }).isRequired,
+  cheats: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  loading: PropTypes.bool.isRequired
 };
 
-export default CheatPage;
+const mapStateToProps = ({ cheatSheets }, { match }) => {
+  let { category } = match.params;
+  category = category.replace(/-/g, ' ');
+  const cheats = cheatSheets.cheats
+    .filter(cheat => cheat.category.name === category);
+  return { cheats, loading: cheatSheets.makingApiRequest };
+};
+
+export default connect(mapStateToProps)(CheatPage);

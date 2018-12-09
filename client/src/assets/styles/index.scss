@@ -34,5 +34,26 @@ input[type="submit"]:disabled {
 
 .btn-loader {
   transform: translateX(-60px);
-  visibility: hidden;
+}
+
+.loader {
+  max-width: 1232px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  width: 100%;
+  transform: translateY(-64px);
+
+  div {
+    margin: 0 auto;
+  }
+}
+
+#nprogress .bar {
+  background: #6756b3;
+  height: 4px;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #6756b3, 0 0 5px #6756b3;
 }
