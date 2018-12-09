@@ -1,12 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import CheatCommand from './CheatCommand';
 
 const Container = styled.div`
   margin: 0 2%;
-  padding-bottom: 20px;
   min-width: 300px;
+  padding-bottom: 20px;
   break-inside: avoid;
+    
 
   header {
     display: flex;
@@ -47,9 +49,15 @@ const Container = styled.div`
       padding: 16px 20px;
 
       .command {
+        ::-webkit-scrollbar {
+          width: 0;
+        }
+
+        overflow: auto;
         font-family: Cousine, sans-serif;
         line-height: 20px;
-        font-size: 13px;
+        font-size: 14px;
+        cursor: pointer;
 
         .git {
           color: teal;
@@ -76,21 +84,29 @@ const Container = styled.div`
   }
 `;
 
-const CheatCard = () => (
+const CheatCard = ({
+  commands,
+  description,
+  header
+}) => (
   <Container>
     <header>
-      <h6 className="heading">Install Git From Homebrew</h6>
+      <h6 className="heading">{header}</h6>
     </header>
     <main className="body-area">
       <div className="commands">
-        <CheatCommand />
-        <CheatCommand />
+        {commands
+          .map(command => <CheatCommand key={command} command={command} />)}
       </div>
-      <div className="description">
-        Description of command goes here of command goes here
-      </div>
+      <div className="description">{description}</div>
     </main>
   </Container>
 );
+
+CheatCard.propTypes = {
+  commands: PropTypes.arrayOf(PropTypes.string).isRequired,
+  description: PropTypes.string.isRequired,
+  header: PropTypes.string.isRequired
+};
 
 export default CheatCard;

@@ -11,13 +11,15 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import { STATUS_CODES } from 'http';
 import dbConfig from './config';
-import routes from './routes/user';
-import setupAdmin from './seeds/adminSeed';
+import userRoutes from './routes/user';
+import cheatRoutes from './routes/cheats';
+import setupAdmin from './seeds/adminSeeder';
+import seedCheats from './seeds/cheatSeeder';
 
 dotenv.config();
 
 const env = process.env.NODE_ENV || 'development';
-const port = process.env.PORT || 5000;
+const port = env === 'test' ? 5001 : process.env.PORT || 5000;
 const config = dbConfig[env];
 const app = express();
 
@@ -84,7 +86,8 @@ app.get('/api', (req, res) => {
   });
 });
 
-app.use(routes);
+app.use(userRoutes);
+app.use(cheatRoutes);
 
 app.use('*', (req, res) => {
   res.sendFile(resolve(__dirname, '../client/index.html'));
@@ -98,7 +101,7 @@ export const server = app.listen(port, (err) => {
   db.once('open', () => {
     console.info('🍺 Database connection established...');
     console.info(`🍺 Server started on ${port}`);
-    setupAdmin();
+    setupAdmin(() => seedCheats());
   });
 });
 

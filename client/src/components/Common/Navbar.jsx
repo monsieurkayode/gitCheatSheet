@@ -15,6 +15,7 @@ const Nav = styled.nav`
   text-align: center;
   position: relative;
   align-self: normal;
+  z-index: 10;
 
   @keyframes drop {
     from {

@@ -1,10 +1,12 @@
+/* eslint-disable no-underscore-dangle */
 import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Container from '../Common/Container';
 import SearchBar from '../Common/SearchBar';
 import CategoryCard from '../Common/CategoryCard';
 import Footer from '../Common/Footer';
-import categories from '../../../../global/categories';
 
 const Section = styled.section`
   margin-top: 80px;
@@ -16,7 +18,7 @@ const Section = styled.section`
   }
 `;
 
-const LandingPage = () => (
+const LandingPage = ({ categories }) => (
   <Fragment>
     <Container>
       <SearchBar />
@@ -24,8 +26,8 @@ const LandingPage = () => (
         { categories.map(category => (
           <CategoryCard
             className="category"
-            key={category}
-            category={category}
+            key={category._id}
+            category={category.name}
           />
         ))}
       </Section>
@@ -34,4 +36,12 @@ const LandingPage = () => (
   </Fragment>
 );
 
-export default LandingPage;
+LandingPage.propTypes = {
+  categories: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+};
+
+const mapStateToProps = ({ cheatSheets }) => ({
+  categories: cheatSheets.categories
+});
+
+export default connect(mapStateToProps)(LandingPage);

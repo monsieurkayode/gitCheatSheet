@@ -1,20 +1,13 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import supertest from 'supertest';
 import mongoose from 'mongoose';
-import app, {
-  server
-} from '../server';
+import app from '../server';
 
 const request = supertest(app);
 const db = mongoose.connection;
 
 describe('User Authentication Test', () => {
   beforeAll(() => db.dropDatabase());
-
-  afterAll(() => {
-    mongoose.disconnect();
-    server.close();
-  });
 
   it('should connect to server with ok status', async () => {
     const response = await request.get('/api');

@@ -2,8 +2,9 @@ import axios from 'axios';
 import decode from 'jwt-decode';
 import * as types from './actionTypes';
 import { toastError, toastSuccess, toastInfo } from '../helpers/toster';
+import Progress from '../helpers/progress';
 
-const makingApiRequest = pending => ({
+export const makingApiRequest = pending => ({
   type: types.MAKING_API_REQUEST,
   pending
 });
@@ -20,6 +21,7 @@ export const loginUserSuccess = user => ({
 
 export const loginUser = userCredentials => async (dispatch) => {
   dispatch(makingApiRequest(true));
+  Progress.start();
 
   try {
     const response = await axios.post('/api/v1/login', userCredentials);
@@ -29,11 +31,13 @@ export const loginUser = userCredentials => async (dispatch) => {
     dispatch(loginUserSuccess(user));
     dispatch(makingApiRequest(false));
     toastSuccess(message);
+    Progress.done();
   } catch (error) {
     const { data } = error.response;
     dispatch(loginUserFailure(data));
     dispatch(makingApiRequest(false));
     toastError(data.message);
+    Progress.done();
   }
 };
 
@@ -49,6 +53,7 @@ const registerUserSuccess = user => ({
 
 export const registerUser = userDetails => async (dispatch) => {
   dispatch(makingApiRequest(true));
+  Progress.start();
 
   try {
     const response = await axios.post('/api/v1/register', userDetails);
@@ -58,11 +63,13 @@ export const registerUser = userDetails => async (dispatch) => {
     dispatch(registerUserSuccess(user));
     dispatch(makingApiRequest(false));
     toastSuccess(message);
+    Progress.done();
   } catch (error) {
     const { data } = error.response;
     dispatch(registerUserFailure(data));
     dispatch(makingApiRequest(false));
     toastError(data.message);
+    Progress.done();
   }
 };
 
