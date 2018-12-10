@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container Component should render correctly 1`] = `
+<styled.main>
+  <StyledComponent
+    forwardedComponent={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "componentId": "sc-bdVaJa",
+          "isStatic": true,
+          "lastClassName": "fosNZJ",
+          "rules": Array [
+            "
+  max-width: 740px;
+  margin-top: 5%;
+  margin-bottom: 60px;
+  padding: 0 1%;
+  flex: 1;
+  width: 100%;
+  z-index: 100;
+
+  @media only screen and (max-width: 424px) {
+    align-self: normal;
+    margin-top: 10%;
+    padding: 0 2%;
+  }
+",
+          ],
+        },
+        "displayName": "styled.main",
+        "foldedComponentIds": Array [],
+        "render": [Function],
+        "styledComponentId": "sc-bdVaJa",
+        "target": "main",
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      }
+    }
+    forwardedRef={null}
+  >
+    <main
+      className="sc-bdVaJa fosNZJ"
+    />
+  </StyledComponent>
+</styled.main>
+`;

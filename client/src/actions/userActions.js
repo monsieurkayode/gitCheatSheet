@@ -42,12 +42,12 @@ export const loginUser = userCredentials => async (dispatch) => {
 };
 
 const registerUserFailure = error => ({
-  type: types.LOGIN_USER_FAILURE,
+  type: types.REGISTER_USER_FAILURE,
   error
 });
 
 const registerUserSuccess = user => ({
-  type: types.LOGIN_USER_SUCCESS,
+  type: types.REGISTER_USER_SUCCESS,
   user
 });
 

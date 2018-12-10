@@ -18,7 +18,7 @@ const Section = styled.section`
   }
 `;
 
-const LandingPage = ({ categories, history }) => (
+export const LandingPage = ({ categories, history }) => (
   <Fragment>
     <Container>
       <SearchBar
@@ -46,7 +46,7 @@ LandingPage.propTypes = {
   }).isRequired
 };
 
-const mapStateToProps = ({ cheatSheets }) => ({
+export const mapStateToProps = ({ cheatSheets }) => ({
   categories: cheatSheets.categories
 });
 

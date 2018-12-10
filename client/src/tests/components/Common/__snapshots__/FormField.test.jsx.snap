@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormField Component should render correctly 1`] = `
+<FormField
+  error=""
+  icon=""
+  loading={false}
+  name="username"
+  onBlur={[MockFunction]}
+  onChange={[MockFunction]}
+  placeholder=""
+  type="text"
+  value=""
+>
+  <styled.div
+    className="form-field"
+  >
+    <StyledComponent
+      className="form-field"
+      forwardedComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-bdVaJa",
+            "isStatic": true,
+            "lastClassName": "fyCLyu",
+            "rules": Array [
+              "
+  .icon {
+    font-size: 32px;
+    -webkit-text-fill-color: #15234d;
+    order: -1;
+  }
+
+  input[type=\\"text\\"],
+  input[type=\\"password\\"] {
+    width: 60%;
+    margin-left: 10px;
+    line-height: 32px;
+    border: unset;
+    border-bottom: 2px solid #668090;
+    background: #f1f3f5;
+    font-size: 14px;
+    font-family: Roboto, sans-serif;
+    letter-spacing: 1.5px;
+
+    &:focus {
+      border-bottom: 2px solid #6756b3;
+    }
+
+    &.invalid {
+      border-bottom: 2px solid crimson;
+    }
+
+    &.valid {
+      border-bottom: 2px solid teal;
+    }
+
+    @media only screen and (max-width: 480px) {
+      width: 80%;
+    }
+  }
+
+  input:focus + .icon {
+    -webkit-text-fill-color: #6756b3;
+  }
+
+  .error {
+    width: 60%;
+    font-size: 12px;
+    color: crimson;
+    font-family: Roboto, sans-serif;
+    margin-top: 6px;
+    text-align: right;
+    transform: translateX(22px);
+
+    @media only screen and (max-width: 480px) {
+      width: 80%;
+    }
+  }
+",
+            ],
+          },
+          "displayName": "styled.div",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-bdVaJa",
+          "target": "div",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
+    >
+      <div
+        className="form-field sc-bdVaJa fyCLyu"
+      >
+        <input
+          className=""
+          name="username"
+          onBlur={[MockFunction]}
+          onChange={[MockFunction]}
+          placeholder=""
+          readOnly={false}
+          type="text"
+          value=""
+        />
+        <i
+          className="material-icons icon"
+        />
+        <div
+          className="error"
+        >
+           
+        </div>
+      </div>
+    </StyledComponent>
+  </styled.div>
+</FormField>
+`;

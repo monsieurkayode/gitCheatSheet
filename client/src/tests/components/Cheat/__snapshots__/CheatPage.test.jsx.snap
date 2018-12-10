@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheatPage Component should render correctly 1`] = `
+<Fragment>
+  <styled.main>
+    <styled.div>
+      <styled.h2>
+        install git
+         
+      </styled.h2>
+      <styled.h2
+        sub={true}
+      >
+        cheatsheet
+      </styled.h2>
+    </styled.div>
+    <styled.section>
+      <Connect(CheatCard)
+        _id={1}
+        key="1"
+      />
+    </styled.section>
+  </styled.main>
+</Fragment>
+`;

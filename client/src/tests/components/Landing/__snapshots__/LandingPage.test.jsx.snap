@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar Component should render correctly 1`] = `
+<Fragment>
+  <styled.main>
+    <SearchBar
+      onChange={[Function]}
+      onFocus={[Function]}
+      search={false}
+      searchTerm=""
+    />
+    <styled.section>
+      <withRouter(CategoryCard)
+        category="Branch"
+        className="category"
+        key="1"
+      />
+    </styled.section>
+  </styled.main>
+  <Footer />
+</Fragment>
+`;

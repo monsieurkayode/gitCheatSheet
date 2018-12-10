@@ -140,7 +140,7 @@ const NavMenu = styled.ul`
   display: ${props => (props.authenticated ? 'none' : '')}
 `;
 
-const NavBar = ({ user, authenticated, logout }) => (
+export const NavBar = ({ user, authenticated, logout }) => (
   <Nav className="top-nav">
     <div className="container">
       <div className="left">
@@ -219,7 +219,7 @@ NavBar.propTypes = {
 };
 
 
-const mapStateToProps = ({ userDetails }) => ({
+export const mapStateToProps = ({ userDetails }) => ({
   authenticated: Object.keys(userDetails.user).length === 2,
   user: userDetails.user
 });

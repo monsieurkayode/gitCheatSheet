@@ -22,7 +22,7 @@ const NotFound = styled(NoContent)`
   flex: 1
 `;
 
-class SearchPage extends Component {
+export class SearchPage extends Component {
   static propTypes = {
     cheats: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     loading: PropTypes.bool.isRequired
@@ -61,7 +61,7 @@ class SearchPage extends Component {
         {!loading
           && filteredCheats.length === 0
           && <NotFound content="No cheat found, try with a diffrent keyword" />}
-        {filteredCheats.length > 0 && (
+        {filteredCheats.length > 0 && searchTerm.trim().length > 0 && (
         <Section>
           { filteredCheats
             .map(cheat => <CheatCard key={cheat._id} {...cheat} />)}

@@ -9,7 +9,7 @@ import FormField from '../Common/FormField';
 import Loader from '../Common/Loader';
 import { validateUserForm } from '../../../../shared/validator';
 
-class SignupPage extends Component {
+export class SignupPage extends Component {
   static propTypes = {
     registerUser: PropTypes.func.isRequired,
     authenticated: PropTypes.bool.isRequired,
@@ -108,7 +108,7 @@ class SignupPage extends Component {
   }
 }
 
-const mapStateToProps = ({ userDetails }) => ({
+export const mapStateToProps = ({ userDetails }) => ({
   authenticated: Object.keys(userDetails.user).length === 2,
   loading: userDetails.makingApiRequest
 });

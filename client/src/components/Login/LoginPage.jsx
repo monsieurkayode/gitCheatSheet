@@ -8,7 +8,7 @@ import Button from '../Common/Button';
 import FormField from '../Common/FormField';
 import Loader from '../Common/Loader';
 
-class LoginPage extends Component {
+export class LoginPage extends Component {
   static propTypes = {
     loginUser: PropTypes.func.isRequired,
     authenticated: PropTypes.bool.isRequired,
@@ -109,7 +109,7 @@ class LoginPage extends Component {
   }
 }
 
-const mapStateToProps = ({ userDetails }) => ({
+export const mapStateToProps = ({ userDetails }) => ({
   authenticated: Object.keys(userDetails.user).length === 2,
   loading: userDetails.makingApiRequest
 });
