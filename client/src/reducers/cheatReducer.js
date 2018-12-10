@@ -9,6 +9,8 @@ export default (state = initialState, action) => {
       return { ...state, makingApiRequest: action.pending };
     case types.FETCH_CATEGORIES_SUCCESS:
       return { ...state, categories: action.categories };
+    case types.SET_COPIED_CLIPBOARD_ID:
+      return { ...state, copiedId: action.id };
     default:
       return state;
   }

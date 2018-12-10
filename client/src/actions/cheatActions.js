@@ -45,4 +45,9 @@ const fetchCheats = (category = '') => async (dispatch) => {
   }
 };
 
+export const setCopiedClipboardId = id => dispatch => dispatch({
+  type: types.SET_COPIED_CLIPBOARD_ID,
+  id
+});
+
 export default fetchCheats;
