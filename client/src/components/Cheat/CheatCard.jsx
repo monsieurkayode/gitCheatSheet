@@ -93,7 +93,7 @@ const Container = styled.div`
   }
 `;
 
-const CheatCard = ({
+export const CheatCard = ({
   commands,
   description,
   header,

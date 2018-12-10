@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer Component should render correctly and without crashing 1`] = `
+<Footer>
+  <styled.footer>
+    <StyledComponent
+      forwardedComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-bdVaJa",
+            "isStatic": true,
+            "lastClassName": "czibSw",
+            "rules": Array [
+              "
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 0 8px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  padding: 16px;
+  font-size: 14px;
+  font-family: Prompt, sans-serif;
+  width: 100%;
+  user-select: none;
+
+  p {
+    span {
+      background: #6756b3;
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 15px;
+      font-size: 12px;
+    }
+  }
+",
+            ],
+          },
+          "displayName": "styled.footer",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-bdVaJa",
+          "target": "footer",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
+    >
+      <footer
+        className="sc-bdVaJa czibSw"
+      >
+        <p>
+          © 2018, Kayode
+        </p>
+        <p>
+          Inspired By 
+          <span>
+            devhints.io
+          </span>
+        </p>
+      </footer>
+    </StyledComponent>
+  </styled.footer>
+</Footer>
+`;

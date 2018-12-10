@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheatCard Component should render correctly 1`] = `
+<styled.div>
+  <header>
+    <h6
+      className="heading"
+    >
+      header
+    </h6>
+  </header>
+  <main
+    className="body-area"
+  >
+    <span
+      className="tip"
+    >
+      copied!
+    </span>
+    <div
+      className="commands"
+    >
+      <CheatCommand
+        command="git merge"
+        id="1"
+        key="git merge"
+        onCopy={[MockFunction]}
+      />
+    </div>
+    <div
+      className="description"
+    >
+      desc
+    </div>
+  </main>
+</styled.div>
+`;

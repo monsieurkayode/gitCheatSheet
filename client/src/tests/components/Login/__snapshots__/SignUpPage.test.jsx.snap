@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignupPage Component should render correctly 1`] = `
+<Fragment>
+  <styled.main>
+    <form
+      onSubmit={[Function]}
+    >
+      <FormField
+        error=""
+        icon="account_circle"
+        loading={false}
+        name="username"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Username"
+        type="text"
+        value=""
+      />
+      <FormField
+        error=""
+        icon="lock"
+        loading={false}
+        name="password"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Password"
+        type="password"
+        value=""
+      />
+      <FormField
+        error=""
+        icon="lock"
+        loading={false}
+        name="confirmPassword"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Confirm Password"
+        type="password"
+        value=""
+      />
+      <div
+        className="form-field"
+      >
+        <styled.input
+          disabled={false}
+          type="submit"
+          value="Register"
+        />
+        <Loader
+          inline={true}
+          loading={false}
+          size={15}
+          strokeColor="#fff"
+        />
+      </div>
+    </form>
+  </styled.main>
+</Fragment>
+`;

@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchPage Component should render correctly 1`] = `
+<Fragment>
+  <styled.main
+    style={
+      Object {
+        "flex": 0,
+        "marginBottom": 0,
+      }
+    }
+  >
+    <SearchBar
+      onChange={[Function]}
+      onFocus={[Function]}
+      search={true}
+      searchTerm=""
+    />
+  </styled.main>
+  <styled.section>
+    <Connect(CheatCard)
+      _id="1"
+      category={
+        Object {
+          "name": "install",
+        }
+      }
+      description="install"
+      key="1"
+      keywords={Array []}
+    />
+  </styled.section>
+</Fragment>
+`;

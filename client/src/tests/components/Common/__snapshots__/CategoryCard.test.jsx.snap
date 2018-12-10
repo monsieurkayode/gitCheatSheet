@@ -1,0 +1,163 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Category Card Component should render correctly 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <withRouter(CategoryCard)
+      category="Branch"
+      history={
+        Object {
+          "push": [MockFunction],
+        }
+      }
+    >
+      <Route>
+        <CategoryCard
+          category="Branch"
+          history={
+            Object {
+              "action": "POP",
+              "block": [Function],
+              "createHref": [Function],
+              "go": [Function],
+              "goBack": [Function],
+              "goForward": [Function],
+              "length": 1,
+              "listen": [Function],
+              "location": Object {
+                "hash": "",
+                "pathname": "/",
+                "search": "",
+                "state": undefined,
+              },
+              "push": [Function],
+              "replace": [Function],
+            }
+          }
+          location={
+            Object {
+              "hash": "",
+              "pathname": "/",
+              "search": "",
+              "state": undefined,
+            }
+          }
+          match={
+            Object {
+              "isExact": true,
+              "params": Object {},
+              "path": "/",
+              "url": "/",
+            }
+          }
+        >
+          <styled.div
+            className="category"
+            key="Branch"
+            onClick={[Function]}
+          >
+            <StyledComponent
+              className="category"
+              forwardedComponent={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-bdVaJa",
+                    "isStatic": true,
+                    "lastClassName": "bVUSMF",
+                    "rules": Array [
+                      "
+  height: 64px;
+  flex: 1 1 23%;
+  min-width: 160px;
+  background: #668090;
+  border-radius: 4px;
+  margin: 5px;
+  padding: 0 16px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  text-transform: uppercase;
+  font-family: Prompt, sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  user-select: none;
+  color: #fff;
+
+  p {
+    width: 100%;
+  }
+
+  .fiber {
+    vertical-align: sub;
+    font-size: 14px;
+    color: #93d82a;
+  }
+
+  &:hover {
+    background: #546975;
+  }
+
+  @media only screen and (max-width: 424px) {
+    flex: 1 1 98%;
+  }
+",
+                    ],
+                  },
+                  "displayName": "styled.div",
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-bdVaJa",
+                  "target": "div",
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
+              }
+              forwardedRef={null}
+              onClick={[Function]}
+            >
+              <div
+                className="category sc-bdVaJa bVUSMF"
+                onClick={[Function]}
+              >
+                <p>
+                  Branch
+                    
+                  <i
+                    className="material-icons fiber"
+                  >
+                    fiber_manual_record
+                  </i>
+                </p>
+              </div>
+            </StyledComponent>
+          </styled.div>
+        </CategoryCard>
+      </Route>
+    </withRouter(CategoryCard)>
+  </Router>
+</BrowserRouter>
+`;

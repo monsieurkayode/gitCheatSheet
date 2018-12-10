@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheatCard Component should render correctly 1`] = `
+<pre
+  className="command"
+  onClick={[Function]}
+>
+  <CopyToClipboard
+    text="git merge"
+  >
+    <code>
+      $ 
+      <span
+        className="git"
+      >
+        git
+      </span>
+       
+      merge
+    </code>
+  </CopyToClipboard>
+</pre>
+`;

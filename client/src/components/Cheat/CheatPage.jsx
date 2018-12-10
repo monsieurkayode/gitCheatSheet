@@ -41,7 +41,7 @@ const Section = styled.section`
   margin-top: 20px;
 `;
 
-const CheatPage = ({ match, cheats, loading }) => (
+export const CheatPage = ({ match, cheats, loading }) => (
   <Fragment>
     {cheats.length === 0 && (
       <Loader

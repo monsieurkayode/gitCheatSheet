@@ -1,0 +1,513 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar Component should render correctly 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <NavBar
+      authenticated={false}
+      logout={[MockFunction]}
+      user={Object {}}
+    >
+      <styled.nav
+        className="top-nav"
+      >
+        <StyledComponent
+          className="top-nav"
+          forwardedComponent={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-bdVaJa",
+                "isStatic": true,
+                "lastClassName": "gPjMoj",
+                "rules": Array [
+                  "
+  height: 64px;
+  line-height: 64px;
+  text-align: center;
+  position: relative;
+  align-self: normal;
+  z-index: 10;
+
+  @keyframes drop {
+    from {
+      margin-top: 10px;
+      opacity: 0
+    }
+    to {
+      margin-top: 30px;
+      opacity: 0.9;
+    }
+  }
+
+  .tooltip {
+    line-height: initial;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-family: 'Josefin Sans', sans-serif;
+    background: #668090;
+    margin-top: 30px;
+    box-shadow: 4px 3px 5px rgba(0,0,0,0.3);
+    animation: drop .3s;
+    visibility: unset;
+    display: none;
+
+    &.place-bottom::after {
+      border-bottom-color: #668090;
+    }
+
+    &.place-left::after {
+      border-left-color: #668090;
+    }
+
+    @media only screen and (max-width: 920px) {
+      display: none;
+    }
+  }
+
+  .show {
+    visibility: unset;
+    display: block;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    max-width: 1232px;
+    margin: 0 auto;
+    padding: 0 1%;
+
+    @media only screen and (min-width: 920px) and (max-width: 1260px) {
+      padding: 0 3%;
+    }
+
+    .left {
+      line-height: 0;
+
+      img {
+        width: 45px;
+        min-width: 40px;
+        min-height: 45px;
+        background: #6756b3;
+        border-radius: 50%;
+        border: 2px solid #f1f3f5;
+        padding: 10px;
+        cursor: pointer;
+      }
+    }
+
+    .brand {
+      flex: 1 1 auto;
+      cursor: pointer;
+      
+      > a {
+        text-transform: uppercase;
+        font-family:  'Josefin Sans', sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        text-decoration: none;
+        color: #15234d;
+
+        &:hover {
+          color: #745fb5;
+        }
+      }
+
+    }
+
+    .actions {
+      font-family:  'Josefin Sans', sans-serif;
+      min-width: 60px;
+
+      ul {
+        line-height: 0;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          display: inline-block;
+          cursor: pointer;
+
+          > i {
+            font-size: 20px;
+            -webkit-text-fill-color:  #15234d;
+          }
+        }
+
+        > :last-child {
+          padding-left: 20px;
+        }
+      }
+    }
+  }
+",
+                ],
+              },
+              "displayName": "styled.nav",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-bdVaJa",
+              "target": "nav",
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          forwardedRef={null}
+        >
+          <nav
+            className="top-nav sc-bdVaJa gPjMoj"
+          >
+            <div
+              className="container"
+            >
+              <div
+                className="left"
+              >
+                <Link
+                  onClick={[Function]}
+                  replace={false}
+                  to="/"
+                >
+                  <a
+                    href="/"
+                    onClick={[Function]}
+                  >
+                    <img
+                      alt="Logo"
+                      src="test-file-mock"
+                    />
+                  </a>
+                </Link>
+              </div>
+              <div
+                className="brand"
+              >
+                <Link
+                  replace={false}
+                  to="/"
+                >
+                  <a
+                    href="/"
+                    onClick={[Function]}
+                  >
+                    Gitcheatsheet
+                  </a>
+                </Link>
+              </div>
+              <div
+                className="actions"
+              >
+                <styled.div
+                  authenticated={false}
+                  data-for="logout"
+                  data-tip={true}
+                >
+                  <StyledComponent
+                    authenticated={false}
+                    data-for="logout"
+                    data-tip={true}
+                    forwardedComponent={
+                      Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": Array [],
+                        "componentStyle": ComponentStyle {
+                          "componentId": "sc-bwzfXH",
+                          "isStatic": false,
+                          "lastClassName": "iGxHnd",
+                          "rules": Array [
+                            "
+  line-height: 0;
+  display: ",
+                            [Function],
+                            "
+",
+                          ],
+                        },
+                        "displayName": "styled.div",
+                        "foldedComponentIds": Array [],
+                        "render": [Function],
+                        "styledComponentId": "sc-bwzfXH",
+                        "target": "div",
+                        "toString": [Function],
+                        "warnTooManyClasses": [Function],
+                        "withComponent": [Function],
+                      }
+                    }
+                    forwardedRef={null}
+                  >
+                    <div
+                      className="sc-bwzfXH iGxHnd"
+                      data-for="logout"
+                      data-tip={true}
+                    >
+                      <withAvatarConfig
+                        color="#668090"
+                        onClick={[Function]}
+                        round={true}
+                        size={30}
+                        style={
+                          Object {
+                            "cursor": "pointer",
+                          }
+                        }
+                      >
+                        <Avatar
+                          avatarRedirectUrl={null}
+                          cache={
+                            Object {
+                              "get": [Function],
+                              "hasSourceFailedBefore": [Function],
+                              "set": [Function],
+                              "sourceFailed": [Function],
+                            }
+                          }
+                          className=""
+                          color="#668090"
+                          colors={
+                            Array [
+                              "#d73d32",
+                              "#7e3794",
+                              "#4285f4",
+                              "#67ae3f",
+                              "#d61a7f",
+                              "#ff4080",
+                            ]
+                          }
+                          fgColor="#FFF"
+                          initials={[Function]}
+                          onClick={[Function]}
+                          round={true}
+                          size={30}
+                          style={
+                            Object {
+                              "cursor": "pointer",
+                            }
+                          }
+                          textSizeRatio={3}
+                          unstyled={false}
+                        >
+                          <div
+                            className=" sb-avatar"
+                            onClick={[Function]}
+                            style={
+                              Object {
+                                "borderRadius": "100%",
+                                "cursor": "pointer",
+                                "display": "inline-block",
+                                "fontFamily": "Helvetica, Arial, sans-serif",
+                                "height": "30px",
+                                "verticalAlign": "middle",
+                                "width": "30px",
+                              }
+                            }
+                          >
+                            <div
+                              className=" sb-avatar__text"
+                              style={
+                                Object {
+                                  "background": "#668090",
+                                  "borderRadius": "100%",
+                                  "color": "#FFF",
+                                  "height": "30px",
+                                  "lineHeight": "initial",
+                                  "textAlign": "center",
+                                  "textTransform": "uppercase",
+                                  "width": "30px",
+                                }
+                              }
+                            >
+                              <div
+                                style={
+                                  Object {
+                                    "display": "table",
+                                    "height": "100%",
+                                    "width": "100%",
+                                  }
+                                }
+                              >
+                                <span
+                                  style={
+                                    Object {
+                                      "display": "table-cell",
+                                      "verticalAlign": "middle",
+                                    }
+                                  }
+                                >
+                                  <span
+                                    key="null"
+                                  />
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </Avatar>
+                      </withAvatarConfig>
+                    </div>
+                  </StyledComponent>
+                </styled.div>
+                <styled.ul
+                  authenticated={false}
+                >
+                  <StyledComponent
+                    authenticated={false}
+                    forwardedComponent={
+                      Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": Array [],
+                        "componentStyle": ComponentStyle {
+                          "componentId": "sc-htpNat",
+                          "isStatic": false,
+                          "lastClassName": "dyPnRr",
+                          "rules": Array [
+                            "
+  display: ",
+                            [Function],
+                            "
+",
+                          ],
+                        },
+                        "displayName": "styled.ul",
+                        "foldedComponentIds": Array [],
+                        "render": [Function],
+                        "styledComponentId": "sc-htpNat",
+                        "target": "ul",
+                        "toString": [Function],
+                        "warnTooManyClasses": [Function],
+                        "withComponent": [Function],
+                      }
+                    }
+                    forwardedRef={null}
+                  >
+                    <ul
+                      className="sc-htpNat dyPnRr"
+                    >
+                      <Link
+                        onClick={[Function]}
+                        replace={false}
+                        to="/register"
+                      >
+                        <a
+                          href="/register"
+                          onClick={[Function]}
+                        >
+                          <li>
+                            <i
+                              className="material-icons"
+                              data-for="register"
+                              data-tip={true}
+                            >
+                              person_add
+                            </i>
+                          </li>
+                        </a>
+                      </Link>
+                      <Link
+                        onClick={[Function]}
+                        replace={false}
+                        to="/login"
+                      >
+                        <a
+                          href="/login"
+                          onClick={[Function]}
+                        >
+                          <li>
+                            <i
+                              className="material-icons"
+                              data-for="login"
+                              data-tip={true}
+                            >
+                              account_circle
+                            </i>
+                          </li>
+                        </a>
+                      </Link>
+                    </ul>
+                  </StyledComponent>
+                </styled.ul>
+              </div>
+            </div>
+            <ReactTooltip
+              className="tooltip"
+              effect="solid"
+              id="register"
+              insecure={true}
+              resizeHide={true}
+              wrapper="div"
+            >
+              <div
+                className="__react_component_tooltip place-top type-dark "
+                data-id="tooltip"
+                id="register"
+              >
+                <span>
+                  Register
+                </span>
+              </div>
+            </ReactTooltip>
+            <ReactTooltip
+              className="tooltip"
+              effect="solid"
+              id="login"
+              insecure={true}
+              resizeHide={true}
+              wrapper="div"
+            >
+              <div
+                className="__react_component_tooltip place-top type-dark "
+                data-id="tooltip"
+                id="login"
+              >
+                <span>
+                  Login
+                </span>
+              </div>
+            </ReactTooltip>
+            <ReactTooltip
+              className="tooltip"
+              effect="solid"
+              id="logout"
+              insecure={true}
+              resizeHide={true}
+              wrapper="div"
+            >
+              <div
+                className="__react_component_tooltip place-top type-dark "
+                data-id="tooltip"
+                id="logout"
+              >
+                <span>
+                  Logout
+                </span>
+              </div>
+            </ReactTooltip>
+          </nav>
+        </StyledComponent>
+      </styled.nav>
+    </NavBar>
+  </Router>
+</BrowserRouter>
+`;

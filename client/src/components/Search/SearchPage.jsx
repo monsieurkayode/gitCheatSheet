@@ -22,7 +22,7 @@ const NotFound = styled(NoContent)`
   flex: 1
 `;
 
-class SearchPage extends Component {
+export class SearchPage extends Component {
   static propTypes = {
     cheats: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     loading: PropTypes.bool.isRequired
