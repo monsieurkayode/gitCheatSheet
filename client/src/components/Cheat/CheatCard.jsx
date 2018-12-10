@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import CheatCommand from './CheatCommand';
+import { setCopiedClipboardId } from '../../actions/cheatActions';
 
 const Container = styled.div`
   @keyframes fadeIn {
-    from { opacity: 0 }
-    to { opacity: 1 }
+    from { opacity: 0; transform: translateY(-15px) }
+    to { opacity: 1; transform: translateY(0) }
   }
 
   margin: 0 2%;
@@ -45,6 +47,7 @@ const Container = styled.div`
   }
 
   .body-area {
+    position: relative;
     box-shadow: inset 1px 4px 20px 0px rgba(0,0,0,0.1),
       1px 4px 20px -4px rgba(0,0,0,0.1),
       -1px 3px 20px -4px rgba(0,0,0,0.1);
@@ -52,6 +55,7 @@ const Container = styled.div`
     .commands {
       background: #FFF;
       padding: 16px 20px;
+      user-select: none;
 
       .command {
         ::-webkit-scrollbar {
@@ -92,26 +96,47 @@ const Container = styled.div`
 const CheatCard = ({
   commands,
   description,
-  header
+  header,
+  _id,
+  setId,
+  copiedId
 }) => (
   <Container>
     <header>
       <h6 className="heading">{header}</h6>
     </header>
     <main className="body-area">
+      {copiedId === _id ? <span className="tip">copied!</span> : null}
       <div className="commands">
         {commands
-          .map(command => <CheatCommand key={command} command={command} />)}
+          .map(command => (
+            <CheatCommand
+              key={command}
+              id={_id}
+              command={command}
+              onCopy={setId}
+            />))}
       </div>
       <div className="description">{description}</div>
     </main>
   </Container>
 );
 
+CheatCard.defaultProps = {
+  copiedId: ''
+};
+
 CheatCard.propTypes = {
   commands: PropTypes.arrayOf(PropTypes.string).isRequired,
   description: PropTypes.string.isRequired,
-  header: PropTypes.string.isRequired
+  header: PropTypes.string.isRequired,
+  _id: PropTypes.string.isRequired,
+  setId: PropTypes.func.isRequired,
+  copiedId: PropTypes.string
 };
 
-export default CheatCard;
+const mapStateToProps = ({ cheatSheets: { copiedId } }) => ({ copiedId });
+
+export default connect(mapStateToProps, {
+  setId: setCopiedClipboardId
+})(CheatCard);

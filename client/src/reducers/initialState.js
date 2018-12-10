@@ -6,5 +6,6 @@ export const initialUser = {
 export const initialCheats = {
   makingApiRequest: false,
   cheats: [],
-  categories: []
+  categories: [],
+  copiedId: ''
 };
