@@ -4,9 +4,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Container from '../Common/Container';
-import SearchBar from '../Common/SearchBar';
 import CategoryCard from '../Common/CategoryCard';
-import Footer from '../Common/Footer';
+import SearchPage from './SearchDisplay';
 
 const Section = styled.section`
   margin-top: 80px;
@@ -18,13 +17,10 @@ const Section = styled.section`
   }
 `;
 
-export const LandingPage = ({ categories, history }) => (
+export const LandingPage = ({ categories, searchTerm }) => (
   <Fragment>
+    {searchTerm.length === 0 && (
     <Container>
-      <SearchBar
-        onChange={() => {}}
-        onFocus={() => history.push('/search')}
-      />
       <Section>
         { categories.map(category => (
           <CategoryCard
@@ -34,20 +30,23 @@ export const LandingPage = ({ categories, history }) => (
           />
         ))}
       </Section>
-    </Container>
-    <Footer />
+    </Container>)}
+    <SearchPage />
   </Fragment>
 );
 
+LandingPage.defaultProps = {
+  searchTerm: ''
+};
+
 LandingPage.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  history: PropTypes.shape({
-    push: PropTypes.func
-  }).isRequired
+  searchTerm: PropTypes.string
 };
 
 export const mapStateToProps = ({ cheatSheets }) => ({
-  categories: cheatSheets.categories
+  categories: cheatSheets.categories,
+  searchTerm: cheatSheets.searchTerm.trim()
 });
 
 export default connect(mapStateToProps)(LandingPage);

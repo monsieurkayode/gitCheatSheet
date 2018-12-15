@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { setSearchTerm } from '../../actions/cheatActions';
 
 const Container = styled.div`
   display: flex;
@@ -61,10 +63,8 @@ const Container = styled.div`
 `;
 
 const SearchBar = ({
-  onFocus,
   onChange,
-  searchTerm,
-  search
+  searchTerm
 }) => (
   <Container>
     <span className="tag">gitcheatsheet</span>
@@ -74,26 +74,25 @@ const SearchBar = ({
       type="text"
       className="search"
       placeholder="Search..."
-      onChange={onChange}
-      onFocus={onFocus}
+      onChange={e => onChange(e.target.value)}
       value={searchTerm}
-      // eslint-disable-next-line jsx-a11y/no-autofocus
-      autoFocus={search}
     />
     <i className="material-icons search-icon">search</i>
   </Container>
 );
 
 SearchBar.defaultProps = {
-  searchTerm: '',
-  search: false
+  searchTerm: ''
 };
 
 SearchBar.propTypes = {
-  onFocus: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   searchTerm: PropTypes.string,
-  search: PropTypes.bool
 };
 
-export default SearchBar;
+export default connect(
+  ({
+    cheatSheets: { searchTerm }
+  }) => ({ searchTerm }),
+  { onChange: setSearchTerm }
+)(SearchBar);

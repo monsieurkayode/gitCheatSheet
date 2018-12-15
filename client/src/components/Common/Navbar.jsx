@@ -1,9 +1,10 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Avatar from 'react-avatar';
 import { toast } from 'react-toastify';
 import { logoutUser } from '../../actions/userActions';
@@ -72,15 +73,24 @@ const Nav = styled.nav`
     .left {
       line-height: 0;
 
-      img {
+      img, .back {
         width: 45px;
         min-width: 40px;
         min-height: 45px;
         background: #6756b3;
         border-radius: 50%;
-        border: 2px solid #f1f3f5;
         padding: 10px;
         cursor: pointer;
+      }
+
+      .back {
+        transition: all 0.2s;
+        background: transparent;
+
+        &:hover {
+          background: #6756b3;
+          color: #fff;
+        }
       }
     }
 
@@ -140,13 +150,24 @@ const NavMenu = styled.ul`
   display: ${props => (props.authenticated ? 'none' : '')}
 `;
 
-export const NavBar = ({ user, authenticated, logout }) => (
+export const NavBar = ({
+  user,
+  authenticated,
+  logout,
+  history
+}) => (
   <Nav className="top-nav">
     <div className="container">
       <div className="left">
-        <Link to="/" onClick={() => toast.dismiss()}>
-          <img src={logo} alt="Logo" />
-        </Link>
+        {history.location.pathname === '/' || !authenticated
+          ? (
+            <Link to="/" onClick={() => toast.dismiss()}>
+              <img src={logo} alt="Logo" />
+            </Link>)
+          : (
+            <div onClick={() => history.goBack()}>
+              <i className="material-icons back">keyboard_backspace</i>
+            </div>)}
       </div>
       <div className="brand"><Link to="/">Gitcheatsheet</Link></div>
       <div className="actions">
@@ -215,7 +236,8 @@ NavBar.propTypes = {
     id: PropTypes.string,
     username: PropTypes.string
   }),
-  logout: PropTypes.func.isRequired
+  logout: PropTypes.func.isRequired,
+  history: PropTypes.shape({}).isRequired
 };
 
 
@@ -224,4 +246,6 @@ export const mapStateToProps = ({ userDetails }) => ({
   user: userDetails.user
 });
 
-export default connect(mapStateToProps, { logout: logoutUser })(NavBar);
+export default withRouter(
+  connect(mapStateToProps, { logout: logoutUser })(NavBar)
+);

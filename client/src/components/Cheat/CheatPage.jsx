@@ -9,7 +9,7 @@ import Loader from '../Common/Loader';
 
 const Container = styled.main`
   max-width: 1232px;
-  margin-top: 60px;
+  margin: 60px 0;
   padding: 0 1%;
   flex: 1;
   width: 100%;
@@ -41,33 +41,59 @@ const Section = styled.section`
   margin-top: 20px;
 `;
 
-export const CheatPage = ({ match, cheats, loading }) => (
-  <Fragment>
-    {cheats.length === 0 && (
-      <Loader
-        style={{ display: loading ? '' : 'none' }}
-        size={40}
-        strokeColor="#6756b3"
-        loading={loading}
-      />
-    )}
-    {cheats.length === 0 && !loading && (
-    <NoContent
-      content="Oops, sorry can't find what you're looking for"
-    />)}
-    {cheats.length > 0 && (
-    <Container>
-      <HeaderWrapper>
-        <Heading>{match.params.category.replace(/-/g, ' ')}&nbsp;</Heading>
-        <Heading sub>cheatsheet</Heading>
-      </HeaderWrapper>
-      <Section>
-        {cheats.map(cheat => <CheatCard key={cheat._id} {...cheat} />)}
-      </Section>
-    </Container>
-    )}
-  </Fragment>
-);
+export const CheatPage = ({
+  match,
+  cheats,
+  loading,
+  searchTerm
+}) => {
+  const filteredCheats = cheats
+    .filter((cheat) => {
+      const keyword = searchTerm.toLowerCase();
+      return (
+        cheat.keywords.includes(keyword)
+        || cheat.header.toLowerCase().includes(keyword)
+        || cheat.description.toLowerCase().includes(keyword)
+      );
+    });
+
+  return (
+    <Fragment>
+      {cheats.length === 0 && (
+        <Loader
+          style={{ display: loading ? '' : 'none' }}
+          size={40}
+          strokeColor="#6756b3"
+          loading={loading}
+        />
+      )}
+      {cheats.length === 0 && !loading && (
+      <NoContent
+        content="Oops, sorry can't find what you're looking for"
+      />)}
+      {cheats.length > 0 && filteredCheats.length === 0 && !loading && (
+      <NoContent
+        content="No cheat found, try with a diffrent keyword"
+      />)}
+      {filteredCheats.length > 0 && (
+      <Container>
+        <HeaderWrapper>
+          <Heading>{match.params.category.replace(/-/g, ' ')}&nbsp;</Heading>
+          <Heading sub>cheatsheet</Heading>
+        </HeaderWrapper>
+        <Section>
+          {filteredCheats
+            .map(cheat => <CheatCard key={cheat._id} {...cheat} />)}
+        </Section>
+      </Container>
+      )}
+    </Fragment>
+  );
+};
+
+CheatPage.defaultProps = {
+  searchTerm: ''
+};
 
 CheatPage.propTypes = {
   match: PropTypes.shape({
@@ -76,7 +102,8 @@ CheatPage.propTypes = {
     }).isRequired
   }).isRequired,
   cheats: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired,
+  searchTerm: PropTypes.string
 };
 
 const mapStateToProps = ({ cheatSheets }, { match }) => {
@@ -84,7 +111,11 @@ const mapStateToProps = ({ cheatSheets }, { match }) => {
   category = category.replace(/-/g, ' ');
   const cheats = cheatSheets.cheats
     .filter(cheat => cheat.category.name === category);
-  return { cheats, loading: cheatSheets.makingApiRequest };
+  return {
+    cheats,
+    searchTerm: cheatSheets.searchTerm.trim(),
+    loading: cheatSheets.makingApiRequest
+  };
 };
 
 export default connect(mapStateToProps)(CheatPage);
