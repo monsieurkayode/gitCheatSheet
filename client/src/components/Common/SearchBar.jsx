@@ -62,7 +62,7 @@ const Container = styled.div`
   }
 `;
 
-const SearchBar = ({
+export const SearchBar = ({
   onChange,
   searchTerm
 }) => (
