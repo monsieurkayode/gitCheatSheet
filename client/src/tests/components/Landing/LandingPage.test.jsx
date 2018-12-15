@@ -10,7 +10,8 @@ const setup = () => {
     }],
     history: {
       push: jest.fn()
-    }
+    },
+    searchTerm: ''
   };
 
   const wrapper = shallow(<LandingPage {...props} />);
@@ -18,21 +19,18 @@ const setup = () => {
   return { wrapper, props };
 };
 
-describe('NavBar Component', () => {
+describe('LandingPage Component', () => {
   const { wrapper } = setup();
 
   it('should render correctly', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should render a SearchBar component', () => {
-    const SearchBar = wrapper.find('SearchBar');
-    expect(SearchBar.length).toBe(1);
-  });
-
   describe('mapStateToProps', () => {
     it('should return an object', () => {
-      expect(mapStateToProps({ cheatSheets: { categories: [] } }))
+      expect(mapStateToProps({
+        cheatSheets: { categories: [], searchTerm: '' }
+      }))
         .toBeInstanceOf(Object);
     });
   });

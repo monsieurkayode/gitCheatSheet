@@ -3,9 +3,17 @@ import { shallow } from 'enzyme';
 import { CheatPage } from '../../../components/Cheat/CheatPage';
 
 const setup = () => {
+  const cheat = {
+    _id: 1,
+    category: '',
+    keywords: [],
+    description: '',
+    header: ''
+  };
+
   const props = {
     match: { params: { category: 'install git' } },
-    cheats: [{ _id: 1 }],
+    cheats: [cheat],
     loading: false
   };
 

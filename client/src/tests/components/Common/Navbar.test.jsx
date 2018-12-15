@@ -6,7 +6,13 @@ import { NavBar, mapStateToProps } from '../../../components/Common/Navbar';
 const setup = () => {
   const props = {
     authenticated: false,
-    logout: jest.fn()
+    logout: jest.fn(),
+    history: {
+      goBack: jest.fn(),
+      location: {
+        pathname: '/'
+      }
+    }
   };
 
   const wrapper = mount(

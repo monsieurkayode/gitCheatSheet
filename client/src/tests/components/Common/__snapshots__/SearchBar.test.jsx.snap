@@ -3,8 +3,6 @@
 exports[`SearchBar Component should render correctly 1`] = `
 <SearchBar
   onChange={[MockFunction]}
-  onFocus={[MockFunction]}
-  search={false}
   searchTerm=""
 >
   <styled.div>
@@ -101,11 +99,9 @@ exports[`SearchBar Component should render correctly 1`] = `
           className="divider"
         />
         <input
-          autoFocus={false}
           className="search"
           name="searchTerm"
-          onChange={[MockFunction]}
-          onFocus={[MockFunction]}
+          onChange={[Function]}
           placeholder="Search..."
           type="text"
           value=""
