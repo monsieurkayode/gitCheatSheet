@@ -7,5 +7,6 @@ export const initialCheats = {
   makingApiRequest: false,
   cheats: [],
   categories: [],
-  copiedId: ''
+  copiedId: '',
+  searchTerm: ''
 };

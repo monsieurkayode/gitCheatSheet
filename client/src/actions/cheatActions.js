@@ -50,4 +50,9 @@ export const setCopiedClipboardId = id => dispatch => dispatch({
   id
 });
 
+export const setSearchTerm = searchTerm => dispatch => dispatch({
+  type: types.SET_SEARCH_TERM,
+  searchTerm
+});
+
 export default fetchCheats;

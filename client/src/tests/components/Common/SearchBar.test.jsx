@@ -1,13 +1,11 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import SearchBar from '../../../components/Common/SearchBar';
+import { SearchBar } from '../../../components/Common/SearchBar';
 
 const setup = () => {
   const props = {
-    onFocus: jest.fn(),
     onChange: jest.fn(),
-    searchTerm: '',
-    search: false
+    searchTerm: ''
   };
 
   return mount(<SearchBar {...props} />);

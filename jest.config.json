@@ -11,7 +11,8 @@
     "!<rootDir>/client/src/assets/*",
     "!<rootDir>/client/src/store/*",
     "!<rootDir>/client/src/index.js",
-    "!<rootDir>/client/src/reducers/index.js"
+    "!<rootDir>/client/src/reducers/*",
+    "!<rootDir>/client/src/helpers/*.jsx"
   ],
   "snapshotSerializers": [
     "enzyme-to-json/serializer"

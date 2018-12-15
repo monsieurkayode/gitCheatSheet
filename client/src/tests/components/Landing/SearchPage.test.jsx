@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { SearchPage } from '../../../components/Search/SearchPage';
+import { SearchDisplay } from '../../../components/Landing/SearchDisplay';
 
 const setup = () => {
   const props = {
@@ -15,10 +15,10 @@ const setup = () => {
     loading: false
   };
 
-  return shallow(<SearchPage {...props} />);
+  return shallow(<SearchDisplay {...props} />);
 };
 
-describe('SearchPage Component', () => {
+describe('SearchDisplay Component', () => {
   const wrapper = setup();
 
   it('should render correctly', () => {

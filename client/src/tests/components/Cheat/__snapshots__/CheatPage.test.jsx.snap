@@ -17,7 +17,11 @@ exports[`CheatPage Component should render correctly 1`] = `
     <styled.section>
       <Connect(CheatCard)
         _id={1}
+        category=""
+        description=""
+        header=""
         key="1"
+        keywords={Array []}
       />
     </styled.section>
   </styled.main>

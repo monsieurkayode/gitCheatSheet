@@ -1,14 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NavBar Component should render correctly 1`] = `
+exports[`LandingPage Component should render correctly 1`] = `
 <Fragment>
   <styled.main>
-    <SearchBar
-      onChange={[Function]}
-      onFocus={[Function]}
-      search={false}
-      searchTerm=""
-    />
     <styled.section>
       <withRouter(CategoryCard)
         category="Branch"
@@ -17,6 +11,6 @@ exports[`NavBar Component should render correctly 1`] = `
       />
     </styled.section>
   </styled.main>
-  <Footer />
+  <Connect(SearchDisplay) />
 </Fragment>
 `;
