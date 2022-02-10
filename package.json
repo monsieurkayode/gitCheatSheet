@@ -72,7 +72,7 @@
     "jwt-decode": "^2.2.0",
     "mongoose": "^5.3.11",
     "morgan": "^1.9.1",
-    "node-sass": "^4.9.3",
+    "node-sass": "^7.0.0",
     "nprogress": "^0.2.0",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
